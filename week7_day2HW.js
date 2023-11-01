@@ -21,6 +21,10 @@ let tmntQ = tmnt.map(function(name) {
 });
 console.log(tmntQ)
 
+let tmntActions = tmnt.map( (turtle) => (turtle.slice(-1) === 'o') ? `${turtle} is eating pizza` : `${turtle} is being rude`)
+
+//.endswith()
+
 //Question #4 - Write an arrow function to find the max number in a list. Do not use the Math.max Function.
 
 var findAMax=[123,5436,45784,1234,34,65,234125,645,3452,13216,49]
@@ -32,7 +36,19 @@ var findAMax=[123,5436,45784,1234,34,65,234125,645,3452,13216,49]
 const maxNum = findAMax.reduce((max, i) => (i > max ? i : max), findAMax[0]);
 console.log(maxNum)
 
+////////////////////////////
 
+let getmax = arr => {
+    let currentMax = 0;
+    for (let num of arr) {
+        if (num > currentMax ){
+            currentMax = num;
+        }
+    } return currentMax
+}
+
+////////////
+let getMax2 = arr => arr.reduce( (currentMax, nextVal) => nextVal > currentMax ? nextVal : currentMax)
 //Question #5 - At the end of the third Iteration (the third time the loop has ran) of this for Loop define the state of all the variables used in the cell
 
 
@@ -42,7 +58,7 @@ var ognib = ""
 for(let i=bingo.length-1; i>=0; i--){
     ognib+=(bingo[i])
     //define state from this line on the third iteration
-    if (iterCount === 3) {
+    if (iterCount === 2) {
         //console.log('here')
         console.log(ognib)
         console.log(bingo)
@@ -52,10 +68,15 @@ for(let i=bingo.length-1; i>=0; i--){
 
 //bingo value is
 console.log(bingo)
+B-I-N-G-O
 //ognib value is
 console.log(ognib)
+O-G
 // i value is
 console.log(iterCount)
+5
+
+
 
 // Day 2 Question 1 - Use the array of shop items provided and present the the information in the following format
 
@@ -135,10 +156,26 @@ console.log(hwPerson.pizza[0])
 console.log(hwPerson.shakes)
 console.log(hwPerson.shakes[0].culvers)
 
-for (let foods of hwPerson) {
-    console.log()
+// for (let foods in hwPerson) {
+//     console.log(foods)
+//     for (let more in foods) {
+//         console.log(more)
+//     }
+// }
+function favorites(food) {
+    if (!Array.isArray(food) && typeof food !== "object") {
+        console.log(food)
+    } else if (Array.isArray(food)){
+        for (let i of food) {
+            favorites(i)
+        }
+    } else if (typeof food === 'object') {
+        let (let key in food) {
+            console.log(key, 'contains:')
+            favorites(food[key])
+        }
+    }
 }
-
 
 
 
