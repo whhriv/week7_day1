@@ -178,6 +178,26 @@ function favorites(food) {
 }
 
 
+////////////////////////
+function parseObj(value){
+    // If the value is not an array or object
+    if (!Array.isArray(value) && typeof value !== "object"){
+        // log the value
+        console.log(value);
+    // if the value is an Array
+    } else if (Array.isArray(value)){
+        // Loop through the array, and call the parseObj on each element
+        for (let element of value){
+            parseObj(element)
+        }
+    } else if (typeof value === 'object'){
+        // Loop through the keys, and call the parseObj on each value
+        for (let key in value){
+            console.log(key, 'contains:')
+            parseObj(value[key])
+        }
+    }
+}
 
 
 
