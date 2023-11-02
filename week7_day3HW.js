@@ -32,10 +32,6 @@ class Player extends GameMember{
     hit() {
         if (this.total() < 21) {
             super.hit();
-        //     console.log(this.hand)
-        // }
-        // else if (this.total() <21 && this.total() >=14)
-        //     super.hit()
     }}
 }
 let dealer = new Dealer();
@@ -45,3 +41,37 @@ console.log("dealer hand:", dealer.hand);
 console.log("Player hand:", player.hand);
 
 player.hit();
+
+// in-class
+
+class GameMember{
+    constructor(){
+        this.hand = [getRandomNumer(), getRandomNumber()]
+    } 
+    hit() {
+        this.hand.push(getRandomNumber())
+    }
+}
+class Dealer extends GameMember{
+    hit(){
+        let total = 0
+        for (let num of this.hand){
+            total+= num
+        }
+        if (total <17){
+            super.hit()
+        } else {
+            console.log('Cannot hit at 17 and over')
+        }
+    }
+}
+class Player extends GameMember{
+    hit() {
+    let total = this.hand.reduce( (runningSum, nextVal) => runningSum + nextVal)
+    if (total <21){
+        super.hit();
+
+    }else {
+        console.log('cannot hit at 21 and over')
+    }
+}}

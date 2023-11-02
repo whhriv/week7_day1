@@ -64,3 +64,50 @@ moreThanTen(string2)
 //          }, 0)
 //      } )
 //  }
+
+function checkString(string) {
+    return new Promise( {resolve, reject} => {
+        if (string.length >10) {
+            setTimeout( () => resolve('Big Word'), 0)
+        } else {
+            setTimeout(() => reject('small string'),0)
+        }
+    })
+}
+
+checkString('abc')
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+
+
+// IN CLASS PROBLEM 6
+
+function login(username, passowrd) {
+    return new Promise((resolve, reject) => {
+        if (username == "codingtemple" && password == "ctrules") {
+            setTimeout(()=> resolve("you have logged in"), 2000)
+        } else {
+            setTimeout(() => reject("invalid credentials"), 2000)
+        }
+    })
+}
+login("brians", 'abc123')
+    .then(str => console.log(str.toUpperCase()))
+    .catch(errStr => console.warn(errStr))
+
+login('codingtemple', 'ctrules')
+    .then(str => console.log(str.tUpperCase()))
+    .catch(errStr => console.warn(errStr))
+
+//async await
+
+async function logUserIn(username, password) {
+
+    try{
+        let str = await login(username, password);
+        console.log(str.toUpperCase())
+    } catch(err) {
+        console.warn(err)
+    }
+}
+logUserIn('')
